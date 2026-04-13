@@ -48,8 +48,12 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section className="py-24 bg-white" id="faq">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative overflow-hidden" style={{ background: "#06060f" }} id="faq">
+      {/* Background decorations */}
+      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violet-900/15 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,16 +61,16 @@ export function FAQSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <span className="text-indigo-600 font-semibold text-sm uppercase tracking-widest mb-3 block">
+          <span className="text-violet-400 font-semibold text-sm uppercase tracking-widest mb-3 block">
             FAQ
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
             Got questions?{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
+            <span className="gradient-text-violet">
               We&apos;ve got answers.
             </span>
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-slate-400">
             Everything you need to know before you make your decision.
           </p>
         </motion.div>
@@ -77,11 +81,27 @@ export function FAQSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full space-y-3">
             {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`}>
-                <AccordionTrigger id={`faq-trigger-${i}`}>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="rounded-2xl overflow-hidden border-0"
+                style={{
+                  background: "rgba(13,13,31,0.8)",
+                  border: "1px solid rgba(99,102,241,0.15)",
+                  backdropFilter: "blur(12px)",
+                }}
+              >
+                <AccordionTrigger
+                  id={`faq-trigger-${i}`}
+                  className="text-white hover:text-violet-300 px-6 py-5 text-left font-semibold hover:no-underline transition-colors"
+                >
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-5 text-slate-400 leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -90,3 +110,4 @@ export function FAQSection() {
     </section>
   );
 }
+

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, Sparkles, Users, BookOpen, MessageSquare, Clock } from "lucide-react";
 import { useRef } from "react";
@@ -187,7 +186,7 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: 3D hero image */}
+          {/* Right: hero video */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
@@ -202,20 +201,22 @@ export function HeroSection() {
                     style={{ background: "linear-gradient(to bottom, transparent, rgba(139,92,246,0.08), transparent)" }} />
                 </div>
 
-                <Image
-                  src="/hero-3d.png"
-                  alt="AI-powered learning platform visual"
-                  width={600}
-                  height={500}
+                {/* Hero video replacing the static image */}
+                <video
+                  src="/homepage.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                   className="w-full h-auto object-cover rounded-3xl"
-                  priority
+                  style={{ maxHeight: "500px" }}
                 />
 
-                {/* Overlay overlays */}
+                {/* Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06060f]/60 via-transparent to-transparent rounded-3xl" />
                 <div className="absolute inset-0 rounded-3xl border border-violet-500/20" />
 
-                {/* Floating badge on image */}
+                {/* Floating badge on video */}
                 <div className="absolute bottom-6 left-6 glass-dark rounded-2xl px-4 py-3 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center">
                     <Sparkles className="w-5 h-5 text-white" />

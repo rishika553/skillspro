@@ -46,23 +46,6 @@ export function CourseDetailClient({ course }: Props) {
 
   return (
     <div className="pt-16 bg-slate-50 min-h-screen">
-      {/* Top bar — same on every course */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <nav className="flex items-center gap-2 text-sm text-slate-500">
-            <Link href="/" className="hover:text-blue-600 transition-colors">
-              Home
-            </Link>
-            <span className="text-slate-300">/</span>
-            <Link href="/courses" className="hover:text-blue-600 transition-colors">
-              Programs
-            </Link>
-            <span className="text-slate-300">/</span>
-            <span className="text-slate-900 font-medium truncate">{course.title}</span>
-          </nav>
-        </div>
-      </div>
-
       {/* Hero — unified dark blue (no per-course gradient) */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white">
         <div
@@ -292,11 +275,10 @@ export function CourseDetailClient({ course }: Props) {
                     <Briefcase className="w-8 h-8 text-blue-500 mb-3 shrink-0" />
                     <h3 className="font-bold text-slate-900 text-sm mb-3 leading-snug px-1">{role.role}</h3>
                     <span
-                      className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                        role.demand === "Very High"
-                          ? "bg-emerald-100 text-emerald-800"
-                          : "bg-amber-100 text-amber-800"
-                      }`}
+                      className={`text-xs font-semibold px-2.5 py-1 rounded-full ${role.demand === "Very High"
+                        ? "bg-emerald-100 text-emerald-800"
+                        : "bg-amber-100 text-amber-800"
+                        }`}
                     >
                       {role.demand} demand
                     </span>

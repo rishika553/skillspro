@@ -49,27 +49,28 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
   const img = courseImages[course.slug] || "/hero-3d.png";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      ref={ref}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 1000 }}
-      className="group flex flex-col rounded-3xl overflow-hidden cursor-pointer"
-    >
+    <Link href={`/courses/${course.slug}`} className="block">
       <motion.div
-        whileHover={{ boxShadow: `0 0 60px rgba(59,130,246,0.28), 0 30px 80px rgba(0,0,0,0.6)` }}
-        className="flex flex-col h-full rounded-3xl overflow-hidden transition-shadow duration-500"
-        style={{
-          background: "rgba(13,13,31,0.85)",
-          backdropFilter: "blur(20px)",
-          border: "1px solid rgba(59,130,246,0.22)",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.4)",
-        }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+        ref={ref}
+        onMouseMove={handleMouse}
+        onMouseLeave={reset}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 1000 }}
+        className="group flex flex-col rounded-3xl overflow-hidden cursor-pointer"
       >
+        <motion.div
+          whileHover={{ boxShadow: `0 0 60px rgba(59,130,246,0.28), 0 30px 80px rgba(0,0,0,0.6)` }}
+          className="flex flex-col h-full rounded-3xl overflow-hidden transition-shadow duration-500"
+          style={{
+            background: "rgba(13,13,31,0.85)",
+            backdropFilter: "blur(20px)",
+            border: "1px solid rgba(59,130,246,0.22)",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.4)",
+          }}
+        >
         {/* Course image */}
         <div className="relative h-52 overflow-hidden">
           <Image
@@ -140,24 +141,22 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
             )}
           </div>
 
-          <Link href={`/courses/${course.slug}`} className="block">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full flex items-center justify-center gap-2 py-3 text-sm font-bold text-white rounded-xl transition-all duration-300"
-              style={{
-                background: `linear-gradient(135deg, rgba(37,99,235,0.95), rgba(14,165,233,0.9))`,
-                border: "1px solid rgba(56,189,248,0.45)",
-              }}
-              id={`course-card-btn-${course.slug}`}
-            >
-              <Zap className="w-4 h-4" />
-              View Course Details
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </Link>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full flex items-center justify-center gap-2 py-3 text-sm font-bold text-white rounded-xl transition-all duration-300"
+            style={{
+              background: `linear-gradient(135deg, rgba(37,99,235,0.95), rgba(14,165,233,0.9))`,
+              border: "1px solid rgba(56,189,248,0.45)",
+            }}
+          >
+            <Zap className="w-4 h-4" />
+            View Course Details
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </motion.div>
         </div>
       </motion.div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 }

@@ -16,8 +16,13 @@ const domains = [
 
 export function HiringDomains() {
   return (
-    <section className="py-24 bg-slate-950 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative overflow-hidden text-white" style={{ background: "#06060f" }}>
+      {/* Background decorations */}
+      <div className="absolute inset-0 grid-pattern opacity-40 pointer-events-none" />
+      <div className="absolute top-0 right-1/3 w-64 h-64 bg-indigo-900/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-violet-900/20 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -25,12 +30,12 @@ export function HiringDomains() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <span className="text-indigo-400 font-semibold text-sm uppercase tracking-widest mb-3 block">
+          <span className="text-violet-400 font-semibold text-sm uppercase tracking-widest mb-3 block">
             Career Destinations
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
             Our graduates work at{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
+            <span className="gradient-text-violet">
               companies everywhere
             </span>
           </h2>
@@ -47,10 +52,28 @@ export function HiringDomains() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center hover:border-indigo-500/50 hover:bg-slate-800 transition-all duration-300 group cursor-default"
+              whileHover={{ y: -4, scale: 1.02 }}
+              className="rounded-2xl p-6 text-center cursor-default group transition-all duration-300"
+              style={{
+                background: "rgba(13,13,31,0.8)",
+                border: "1px solid rgba(99,102,241,0.15)",
+                backdropFilter: "blur(12px)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 30px rgba(139,92,246,0.2)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(139,92,246,0.4)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(99,102,241,0.15)";
+              }}
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/20 mb-4 group-hover:bg-indigo-600/20 transition-colors">
-                <domain.icon className="w-6 h-6 text-indigo-400" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 transition-all duration-300"
+                style={{
+                  background: "rgba(99,102,241,0.12)",
+                  border: "1px solid rgba(139,92,246,0.25)",
+                }}>
+                <domain.icon className="w-6 h-6 text-violet-400 group-hover:text-violet-300 transition-colors" />
               </div>
               <h3 className="font-bold text-white mb-1">{domain.label}</h3>
               <p className="text-xs text-slate-500">{domain.examples}</p>
@@ -74,7 +97,12 @@ export function HiringDomains() {
           ].map((badge) => (
             <div
               key={badge}
-              className="bg-slate-900/80 border border-slate-700 rounded-full px-5 py-2.5 text-sm font-medium text-slate-300"
+              className="rounded-full px-5 py-2.5 text-sm font-medium text-slate-300 transition-all duration-300 hover:border-violet-500/40"
+              style={{
+                background: "rgba(13,13,31,0.8)",
+                border: "1px solid rgba(99,102,241,0.2)",
+                backdropFilter: "blur(8px)",
+              }}
             >
               {badge}
             </div>
@@ -84,3 +112,4 @@ export function HiringDomains() {
     </section>
   );
 }
+

@@ -2,16 +2,25 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LayoutGrid } from "lucide-react";
 import { courses } from "@/data/courses";
 import { CourseCard } from "@/components/cards/CourseCard";
-import { Button } from "@/components/ui/button";
 
 export function CoursesOverview() {
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-50 via-blue-50/50 to-slate-50" id="courses">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <section
+      className="py-24 relative overflow-hidden"
+      style={{ background: "#06060f" }}
+      id="courses"
+    >
+      {/* Background decorations — same language as Hero & WhySkillsPro */}
+      <div className="absolute inset-0 dot-grid opacity-30" />
+      <div className="absolute top-0 left-1/4 w-72 h-72 bg-violet-900/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-900/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -19,17 +28,17 @@ export function CoursesOverview() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <span className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-3 block">
+          <span className="text-violet-400 font-semibold text-sm uppercase tracking-widest mb-3 block">
             Our Programs
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
             Choose your career path.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-600">
-              Start transforming.
-            </span>
+            <span className="gradient-text-violet">Start transforming.</span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Each program is designed to take you from where you are today to job-ready — with the tools, mentorship, and outcomes companies actually hire for.
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            Each program is designed to take you from where you are today to
+            job-ready — with the tools, mentorship, and outcomes companies
+            actually hire for.
           </p>
         </motion.div>
 
@@ -49,15 +58,16 @@ export function CoursesOverview() {
           className="text-center mt-12"
         >
           <Link href="/courses">
-            <Button
-              variant="outline"
-              size="lg"
-              className="group border-2 border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.97 }}
               id="courses-view-all-btn"
+              className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-violet-300 rounded-2xl border border-violet-700/50 hover:border-violet-400 hover:bg-violet-950/40 transition-all duration-300"
             >
+              <LayoutGrid className="w-5 h-5" />
               View All Courses
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
           </Link>
         </motion.div>
       </div>

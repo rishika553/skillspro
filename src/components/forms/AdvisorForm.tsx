@@ -44,7 +44,7 @@ export function AdvisorForm({ preselectedCourse }: AdvisorFormProps) {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -52,11 +52,26 @@ export function AdvisorForm({ preselectedCourse }: AdvisorFormProps) {
       return;
     }
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch('/api/advisor-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setErrors({ submit: data.message || 'Failed to submit request' });
+      }
+    } catch (error) {
+      setErrors({ submit: 'Network error. Please try again.' });
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 1200);
+    }
   };
 
   if (submitted) {
@@ -172,6 +187,10 @@ export function AdvisorForm({ preselectedCourse }: AdvisorFormProps) {
           </span>
         )}
       </Button>
+
+      {errors.submit && (
+        <p className="text-red-500 text-sm text-center">{errors.submit}</p>
+      )}
 
       <p className="text-xs text-center text-slate-400">
         No spam. We value your privacy. Our advisor will call you within 24 hours.
