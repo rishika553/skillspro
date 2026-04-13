@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -39,10 +40,15 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 font-bold text-xl group">
-            <span className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 shadow-lg shadow-violet-700/40 group-hover:shadow-violet-600/60 transition-all duration-300">
-              <Zap className="w-4 h-4 text-white" />
-              <span className="absolute inset-0 rounded-xl bg-violet-400/20 blur-sm" />
-            </span>
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-violet-700/40 group-hover:shadow-violet-600/60 transition-all duration-300">
+              <Image
+                src="/logo.png"
+                alt="SkillsPro Logo"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
             <span className="text-white">
               Skills<span className="gradient-text-violet font-extrabold">Pro</span>
             </span>
