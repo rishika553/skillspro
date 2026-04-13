@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Zap, Mail, Phone, MapPin, Link2, MessageCircle, PlayCircle } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin, Link2, MessageCircle, PlayCircle } from "lucide-react";
 
 const footerLinks = {
   Courses: [
@@ -29,11 +30,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white mb-4">
-              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-600">
-                <Zap className="w-4 h-4 text-white" />
-              </span>
-              Skills<span className="text-indigo-400">Pro</span>
+            <Link href="/" className="flex items-center mb-4">
+              <div className="relative w-48 h-16">
+                <Image
+                  src="/course-ai-agents-removebg-preview.png"
+                  alt="SkillsPro"
+                  fill
+                  className="object-contain"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+              </div>
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-xs">
               India&apos;s career-first upskilling platform. We help students, working professionals, and career switchers land jobs in tech, data, and AI with practical, industry-aligned training.

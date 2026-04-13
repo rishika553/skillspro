@@ -39,19 +39,16 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 font-bold text-xl group">
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-violet-700/40 group-hover:shadow-violet-600/60 transition-all duration-300">
+          <Link href="/" className="flex items-center group">
+            <div className="relative w-72 h-24">
               <Image
-                src="/logo.png"
-                alt="SkillsPro Logo"
+                src="/course-ai-agents-removebg-preview.png"
+                alt="SkillsPro"
                 fill
-                className="object-cover"
+                className="object-contain group-hover:scale-105 transition-transform duration-300"
                 priority
               />
             </div>
-            <span className="text-white">
-              Skills<span className="gradient-text-violet font-extrabold">Pro</span>
-            </span>
           </Link>
 
           {/* Desktop nav */}
