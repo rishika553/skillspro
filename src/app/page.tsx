@@ -6,6 +6,7 @@ import { HiringDomains } from "@/components/sections/HiringDomains";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTABanner } from "@/components/sections/CTABanner";
+import { EMISection } from "@/components/sections/EMISection";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <CoursesOverview />
       <PlacementSection />
       <HiringDomains />
+      <EMISection />
       <TestimonialsSection />
       <FAQSection />
       <CTABanner

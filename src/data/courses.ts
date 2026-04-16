@@ -19,9 +19,11 @@ export interface Course {
   careerRoles: { role: string; demand: string }[];
   color: string;
   icon: string;
+  curriculumPdf?: string;
 }
 
 export const courses: Course[] = [
+  // ── 1. AI Agents ──────────────────────────────────────────────────────────
   {
     id: "1",
     slug: "ai-agents",
@@ -104,7 +106,10 @@ export const courses: Course[] = [
     ],
     color: "from-violet-600 to-purple-700",
     icon: "Bot",
+    curriculumPdf: "/Full Stack AI Generalist.pdf",
   },
+
+  // ── 2. QA Automation ──────────────────────────────────────────────────────
   {
     id: "2",
     slug: "qa-automation",
@@ -182,7 +187,10 @@ export const courses: Course[] = [
     ],
     color: "from-emerald-500 to-teal-600",
     icon: "TestTube2",
+    curriculumPdf: "/QA Automation.pdf",
   },
+
+  // ── 3. Data Analyst ───────────────────────────────────────────────────────
   {
     id: "3",
     slug: "data-analyst",
@@ -260,7 +268,10 @@ export const courses: Course[] = [
     ],
     color: "from-blue-500 to-indigo-600",
     icon: "BarChart3",
+    curriculumPdf: "/Data Analyst & Generative AI.pdf",
   },
+
+  // ── 4. Digital Marketing ──────────────────────────────────────────────────
   {
     id: "4",
     slug: "digital-marketing-ai",
@@ -338,6 +349,7 @@ export const courses: Course[] = [
     ],
     color: "from-orange-500 to-rose-500",
     icon: "TrendingUp",
+    curriculumPdf: "/Digital Marketing with Gen AI.pdf",
   },
 ];
 

@@ -51,11 +51,18 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-indigo-400 shrink-0" />
-                <span>+91 98765 43210</span>
+                <a href="tel:+919507464707" className="hover:text-indigo-400 transition-colors">+91 95074 64707</a>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-indigo-400 shrink-0" />
-                <span>Bengaluru, Karnataka, India</span>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+                <a
+                  href="https://maps.google.com/?q=2nd+Floor+Plot+No+16A+Sector+16A+Hari+Vihar+Kakrola+Dwarka+New+Delhi+110078"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  2nd Floor, Plot No 16A, Sector 16A,<br />Hari Vihar, Kakrola, Dwarka,<br />New Delhi – 110078
+                </a>
               </div>
             </div>
             <div className="flex items-center gap-3 mt-6">

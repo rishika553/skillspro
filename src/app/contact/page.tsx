@@ -12,26 +12,34 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 98765 43210",
+    value: "+91 95074 64707",
     desc: "Mon–Sat, 9 AM to 7 PM IST",
+    href: "tel:+919507464707",
+    external: false,
   },
   {
     icon: Mail,
     label: "Email",
     value: "hello@skillspro.in",
     desc: "We respond within 24 hours",
+    href: "mailto:hello@skillspro.in",
+    external: false,
   },
   {
     icon: MapPin,
     label: "Address",
-    value: "Bengaluru, Karnataka",
-    desc: "India (remote-first team)",
+    value: "2nd Floor, Plot No 16A, Sector 16A, Hari Vihar, Kakrola, Dwarka, New Delhi – 110078",
+    desc: "",
+    href: "https://maps.google.com/?q=2nd+Floor+Plot+No+16A+Sector+16A+Hari+Vihar+Kakrola+Dwarka+New+Delhi+110078",
+    external: true,
   },
   {
     icon: Clock,
     label: "Office Hours",
     value: "Mon–Sat",
     desc: "9:00 AM – 7:00 PM IST",
+    href: "",
+    external: false,
   },
 ];
 
@@ -77,8 +85,15 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">{item.label}</p>
-                      <p className="font-semibold text-slate-900">{item.value}</p>
-                      <p className="text-xs text-slate-400">{item.desc}</p>
+                      {item.href ? (
+                        <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined}
+                          className="font-semibold text-slate-900 hover:text-indigo-600 transition-colors">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="font-semibold text-slate-900">{item.value}</p>
+                      )}
+                      {item.desc && <p className="text-xs text-slate-400">{item.desc}</p>}
                     </div>
                   </div>
                 ))}
