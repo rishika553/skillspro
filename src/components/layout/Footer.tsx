@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Link2, MessageCircle, PlayCircle } from "lucide-react";
+import { Phone, MapPin, Link2, MessageCircle, PlayCircle } from "lucide-react";
 
 const footerLinks = {
   Courses: [
@@ -45,10 +45,6 @@ export function Footer() {
               India&apos;s career-first upskilling platform. We help students, working professionals, and career switchers land jobs in tech, data, and AI with practical, industry-aligned training.
             </p>
             <div className="space-y-2 text-sm">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-indigo-400 shrink-0" />
-                <span>hello@skillspro.in</span>
-              </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-indigo-400 shrink-0" />
                 <a href="tel:+919507464707" className="hover:text-indigo-400 transition-colors">+91 95074 64707</a>

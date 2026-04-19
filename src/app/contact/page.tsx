@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
 import { AdvisorForm } from "@/components/forms/AdvisorForm";
 
 export const metadata: Metadata = {
@@ -15,14 +15,6 @@ const contactInfo = [
     value: "+91 95074 64707",
     desc: "Mon–Sat, 9 AM to 7 PM IST",
     href: "tel:+919507464707",
-    external: false,
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "hello@skillspro.in",
-    desc: "We respond within 24 hours",
-    href: "mailto:hello@skillspro.in",
     external: false,
   },
   {
