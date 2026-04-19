@@ -9,7 +9,6 @@ import { Course } from "@/data/courses";
 
 // Map slug → local image (ai-agents uses inline SVG illustration)
 const courseImages: Record<string, string> = {
-  "ai-agents": "/course-ai-agents.png",
   "qa-automation": "/course-qa.png",
   "data-analyst": "/course-data.png",
   "digital-marketing-ai": "/course-marketing.png",
@@ -153,6 +152,7 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
   const reset = () => { x.set(0); y.set(0); };
 
   const img = courseImages[course.slug];
+  const isAIAgents = course.slug === "ai-agents";
 
   return (
     <Link href={`/courses/${course.slug}`} className="block">
@@ -177,14 +177,18 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
             boxShadow: "0 8px 40px rgba(0,0,0,0.4)",
           }}
         >
-          {/* Course image */}
+          {/* Course image / illustration */}
           <div className="relative h-52 overflow-hidden">
-            <Image
-              src={img!}
-              alt={course.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
-            />
+            {isAIAgents ? (
+              <AIAgentsIllustration />
+            ) : (
+              <Image
+                src={img!}
+                alt={course.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d1f] via-transparent to-transparent" />
             <div className={`absolute inset-0 bg-gradient-to-br ${course.color} opacity-30`} />
 
